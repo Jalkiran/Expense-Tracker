@@ -18,4 +18,17 @@ class ExpenseManagement:
                 print(f'Amount:{e.amount}')
         else:
             print('----No expenses found!----\n')
-    
+    def total(self):
+            if self.expense:
+                total={}
+                for e in self.expense:
+                    if e.category in total:
+                        total[e.category]+=e.amount
+                    else:
+                        total[e.category]=e.amount
+                print('----Category Wise Total----\n')
+                for category,amount in total.items():
+                    print(f'{category}: {amount}')
+            else:
+                print('----No expenses found----\n')
+
