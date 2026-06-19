@@ -31,4 +31,10 @@ class ExpenseManagement:
                     print(f'{category}: {amount}')
             else:
                 print('----No expenses found----\n')
-
+    def save(self):
+        data=[]
+        for e in self.expense:
+            data.append({'Amount':e.amount,'Category':e.category,'Date':e.date})
+        with open('expenses.json','w')as f:
+            f.dump(data,f,indent=4)
+        print('Expenses Saved Successfully')
