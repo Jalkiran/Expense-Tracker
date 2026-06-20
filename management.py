@@ -1,10 +1,11 @@
 from expense import Expense
+import json
 class ExpenseManagement:
     def __init__(self):
         self.expense=[]
     def add(self):
         amount=int(input('Enter Amount:'))
-        category=input('Enter Category:').title
+        category=input('Enter Category:').title()
         date=input('Date:')
         e=Expense(amount,category,date)
         self.expense.append(e)
@@ -36,5 +37,5 @@ class ExpenseManagement:
         for e in self.expense:
             data.append({'Amount':e.amount,'Category':e.category,'Date':e.date})
         with open('expenses.json','w')as f:
-            f.dump(data,f,indent=4)
+            json.dump(data,f,indent=4)
         print('Expenses Saved Successfully')
